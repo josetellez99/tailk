@@ -4,30 +4,45 @@ import {Typography} from "@mui/material";
 import styles from './styles.module.css'
 import Link from 'next/link'
 
-export function LoginForm() {
+export function RegisterForm() {
     return (
         <>
             <Typography 
                 variant="body2" 
                 fontWeight={700} 
-                color="secondary"
+                color="secondary" 
                 align="center"
                 marginBlockEnd={3}
             >
-                Welcome back, please enter your email and password and improve your english
+                Please enter the next information to create your account
             </Typography>
             <form className={styles.form}>
                 <TextField
-                    id="username"
+                    id="email"
                     label="Email"
                     variant="outlined"
                     type="email"
                     size="small"
                     color="secondary"
-                    />
+                />
+                <TextField
+                    id="username"
+                    label="Username"
+                    variant="outlined"
+                    size="small"
+                    color="secondary"
+                />
                 <TextField
                     id="password"
                     label="Password"
+                    variant="outlined"
+                    type="password"
+                    size="small"
+                    color="secondary"
+                />
+                <TextField
+                    id="password"
+                    label="Confirm password"
                     variant="outlined"
                     type="password"
                     size="small"
@@ -38,7 +53,7 @@ export function LoginForm() {
                     color="secondary"
                     type="submit"
                     >
-                    Login
+                    Register
                 </Button>
                 <Typography
                     variant="body2"
@@ -46,7 +61,7 @@ export function LoginForm() {
                     align="center"
                     marginBlockEnd={3}
                     >
-                    Don't have an account? <Link className={styles.registerLink} href="/register">Register</Link>
+                    Alredy have an account? <Link className={styles.registerLink} href="/login">sign in here</Link>
                 </Typography>
             </form>
         </>
