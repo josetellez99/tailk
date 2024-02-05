@@ -1,22 +1,18 @@
-import { Typography } from "@mui/material";
-import { Container } from "@mui/material";
+import { Hero } from "@/components/home/Hero";
+import { CallToAction } from "@/components/home/CallToAction";
 import { Box } from "@mui/material";
+import { Header } from "@/components/shared/Header";
+import styles from './page.module.css'
 
-export default function Home() {
+export default function HomePage() {
     
   return (
-    <Box 
-      bgcolor='primary.main'
-    >
-    <Container
-      maxWidth={false}
-      disableGutters
-    >
-      <Typography variant="h2" color='contrastText'>Hola mundo, esto es el inicio de algo genial</Typography>
-      <Box bgcolor='secondary.light'>
-        <Typography variant="h3" color='contrastText'>Esto es una prueba</Typography>
+    <>
+      <Header />
+      <Box className={styles.layout}>
+        <Hero />
+        <CallToAction />
       </Box>
-    </Container>
-    </Box>
+    </>
   );
 }
