@@ -4,6 +4,8 @@ import {Typography} from "@mui/material";
 import styles from './styles.module.css'
 import Link from 'next/link'
 
+import { registerUser } from "@/lib/actions/registering";
+
 export function RegisterForm() {
     return (
         <>
@@ -16,37 +18,41 @@ export function RegisterForm() {
             >
                 Please enter the next information to create your account
             </Typography>
-            <form className={styles.form}>
+            <form action={registerUser} className={styles.form}>
                 <TextField
-                    id="email"
                     label="Email"
+                    name="email"
                     variant="outlined"
                     type="email"
                     size="small"
                     color="secondary"
+                    required
                 />
                 <TextField
-                    id="username"
                     label="Username"
+                    name="username"
                     variant="outlined"
                     size="small"
                     color="secondary"
+                    required
                 />
                 <TextField
-                    id="password"
                     label="Password"
+                    name="password"
                     variant="outlined"
                     type="password"
                     size="small"
                     color="secondary"
+                    required
                 />
                 <TextField
-                    id="password"
-                    label="Confirm password"
+                    label="Confirm Password"
+                    name="passwordConfirm"
                     variant="outlined"
                     type="password"
                     size="small"
                     color="secondary"
+                    required
                 />
                 <Button
                     variant="contained"
@@ -61,7 +67,7 @@ export function RegisterForm() {
                     align="center"
                     marginBlockEnd={3}
                     >
-                    Alredy have an account? <Link className={styles.registerLink} href="/login">sign in here</Link>
+                    Alredy have an account? <Link className={styles.registerLink} href="/login">Sign in here</Link>
                 </Typography>
             </form>
         </>
