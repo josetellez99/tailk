@@ -3,7 +3,6 @@ import styles from './styles.module.css'
 
 export function Hero() {
 
-    console.log(styles)
     return (
         <Typography
             variant="h1" 

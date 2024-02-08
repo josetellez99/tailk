@@ -1,10 +1,38 @@
+'use client'
+
 import { TextField } from "@mui/material";
 import{ Button } from "@mui/material";
 import {Typography} from "@mui/material";
 import styles from './styles.module.css'
 import Link from 'next/link'
+import { useRouter } from "next/navigation";
+import { signIn } from "next-auth/react";
+
 
 export function LoginForm() {
+
+    const router = useRouter()
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        const formData = new FormData(e.target)
+
+        const emailLogin = formData.get('email')
+        const passwordLogin = formData.get('password')
+
+        const signinRes = await signIn('credentials', {
+            email: emailLogin,
+            password: passwordLogin,
+            redirect: false
+        })
+
+
+        if(signinRes?.ok) {
+            router.push('/')
+        }
+
+    }
+
     return (
         <>
             <Typography 
@@ -16,10 +44,11 @@ export function LoginForm() {
             >
                 Welcome back, please enter your email and password and improve your english
             </Typography>
-            <form className={styles.form}>
+            <form onSubmit={handleSubmit} className={styles.form}>
                 <TextField
-                    id="username"
+                    id="email"
                     label="Email"
+                    name="email"
                     variant="outlined"
                     type="email"
                     size="small"
@@ -28,6 +57,7 @@ export function LoginForm() {
                 <TextField
                     id="password"
                     label="Password"
+                    name="password"
                     variant="outlined"
                     type="password"
                     size="small"
@@ -45,7 +75,7 @@ export function LoginForm() {
                     color="secondary"
                     align="center"
                     marginBlockEnd={3}
-                    >
+                >
                     Don't have an account? <Link className={styles.registerLink} href="/register">Register</Link>
                 </Typography>
             </form>
