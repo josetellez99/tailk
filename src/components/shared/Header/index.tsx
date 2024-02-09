@@ -1,10 +1,14 @@
 import { AppBar, Typography, Box } from "@mui/material"
 import { Toolbar } from "@mui/material"
-import { Button } from "@mui/material"
+import { getUserData } from "@/lib/getUserSession"
+import styles from './styles.module.css'
 
 import Link from 'next/link'
 
 export function Header () {
+
+    const session = getUserData()
+
     return (
         <>
             <AppBar 
@@ -17,12 +21,8 @@ export function Header () {
                     <Typography 
                         color='secondary.contrastText' 
                         variant="button">
-                            <Link style={{ color: '#fafafa'}} href="/">Tailk</Link>
+                            <Link className={styles.colorButton} href="/">Tailk</Link>
                         </Typography>
-                    <Box flexGrow={1} />
-                    <Button>
-                        <Link style={{ color: '#fafafa'}} href="/login">Login</Link>
-                    </Button>
                 </Toolbar>
             </AppBar>
         </>

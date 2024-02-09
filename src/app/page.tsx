@@ -1,6 +1,6 @@
 import { Hero } from "@/components/home/Hero";
 import { CallToAction } from "@/components/home/CallToAction";
-import { Box } from "@mui/material";
+import { Box, Container } from "@mui/material";
 import { Header } from "@/components/shared/Header";
 import styles from './page.module.css'
 
@@ -10,22 +10,23 @@ import { getUserData } from "@/lib/getUserSession";
 export default async function HomePage() {
 
   const session = await getUserData()
-  console.log(session)
   
   return (
     <>
       <Header />
-      <Box className={styles.layout}>
-        <Hero />
-        <CallToAction />
-        { session ? (
-          <>
-            <p>Logged in</p>
-            <p>{session?.name}</p>
-            <LogoutButton />
-          </>
-        ): <p>Not logged in</p>}
-      </Box>
+      <Container className={styles.rootLayout}>
+        <Box className={styles.layout}>
+          <Hero />
+          <CallToAction />
+          { session.name ? (
+            <>
+              <p>Hellooo</p>
+              <p>{session?.name}</p>
+              <LogoutButton />
+            </>
+          ): null}
+        </Box>
+      </Container>
     </>
   );
 }

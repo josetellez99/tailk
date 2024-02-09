@@ -43,8 +43,7 @@ export default function RootLayout({
               component={'main'}
             >
               <Box
-                height={'100vh'}
-                bgcolor={'primary.main'}
+                className='root'
               >
                 {children}
               </Box>

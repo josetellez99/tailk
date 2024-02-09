@@ -1,13 +1,15 @@
 import { LoginForm } from "@/components/login/LoginForm";
-import { Box } from "@mui/material";
+import { Box, Container } from "@mui/material";
 import styles from './page.module.css'
 
 export default function LoginPage() {
     return (
         <>
-            <Box className={styles.layout}>
-                <LoginForm />
-            </Box>
+            <Container disableGutters className={styles.rootLayout}>
+                <Box className={styles.layout}>
+                    <LoginForm />
+                </Box>
+            </Container>
         </>
     );
 }

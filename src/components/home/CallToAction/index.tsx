@@ -1,6 +1,8 @@
 import { ButtonGroup } from "@mui/material"
 import { Button } from "@mui/material"
 import { Box } from "@mui/material"
+import Link from 'next/link'
+import styles from './styles.module.css'
 
 export function CallToAction() {
     return (
@@ -22,10 +24,10 @@ export function CallToAction() {
             fullWidth={true}
         >
             <Button>
-                Register
+                <Link className={styles.buttonColor} href="/register">Register</Link>
             </Button>
             <Button>
-                Login
+                <Link className={styles.buttonColor} href="/login">Login</Link>
             </Button>
         </ButtonGroup>
     </Box>
