@@ -1,13 +1,43 @@
-import { AppBar, Typography, Box } from "@mui/material"
+import { AppBar } from "@mui/material"
+import { Typography } from "@mui/material"
 import { Toolbar } from "@mui/material"
-import { getUserData } from "@/lib/getUserSession"
+import { HamburgerMenu } from "./HamburgerMenu"
+import { SidebarHamburgerMenu } from "./SidebarHamburgerMenu"
 import styles from './styles.module.css'
 
+import { getUserSession } from "@/lib/getUserSession"
 import Link from 'next/link'
 
-export function Header () {
 
-    const session = getUserData()
+export async function Header () {
+
+    const user = await getUserSession()
+    const Component = user.name ? LoggedHeader : NotLoggedHeader
+
+    return (
+        <Component />
+    )
+}
+
+
+function LoggedHeader () {
+
+    return (
+        <>
+            <AppBar 
+                className={styles.appBar}
+            >
+                <Toolbar>
+                    <HamburgerMenu />
+                </Toolbar>
+            </AppBar>
+            <SidebarHamburgerMenu />
+        </>
+    )
+}
+
+
+function NotLoggedHeader () {
 
     return (
         <>

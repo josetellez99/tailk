@@ -1,3 +1,8 @@
 .colorButton {
     color: #fafafa
 }
+
+.appBar {
+    position: static;
+    background-color: #517DA2;
+}

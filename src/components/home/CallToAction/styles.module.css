@@ -1,3 +1,22 @@
 .buttonColor {
     color: #fafafa
 }
+
+.buttonGroup {
+    display: flex;
+    justify-content: center;
+    width: 50%;
+}
+
+.button {
+    display: block;
+    width: 100%;
+}
+
+
+@media screen and (max-width: 600px) {
+    .buttonGroup {
+        width: 80%;
+    }
+    
+}

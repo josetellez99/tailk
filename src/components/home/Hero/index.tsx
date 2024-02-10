@@ -5,17 +5,8 @@ export function Hero() {
 
     return (
         <Typography
-            variant="h1" 
-            fontWeight={500} 
-            align="center"
-            sx={{
-                width: {
-                    xs: "80%",
-                    md: "60%",
-                    lg: "40%",
-                    xl: "30%"
-                }
-            }}
+            variant="h1"
+            className={styles.hero}
         >
             Learn english talking with an AI
         </Typography>

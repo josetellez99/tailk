@@ -5,14 +5,15 @@ import { Header } from "@/components/shared/Header";
 import styles from './page.module.css'
 
 import { LogoutButton } from "@/components/home/LogoutButton";
-import { getUserData } from "@/lib/getUserSession";
+import { getUserSession } from "@/lib/getUserSession";
 
 export default async function HomePage() {
 
-  const session = await getUserData()
+  const session = await getUserSession()
   
   return (
     <>
+
       <Header />
       <Container className={styles.rootLayout}>
         <Box className={styles.layout}>
