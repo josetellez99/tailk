@@ -1,9 +1,6 @@
 import { ThemeProvider } from '@mui/material/styles';
 import { theme } from '@/theme';
-
 import { Container } from '@mui/material';
-import { Box } from '@mui/material';
-
 
 import type { Viewport } from 'next'
 import type { Metadata } from "next";
@@ -27,7 +24,6 @@ const roboto = Roboto({
   display: 'swap',
 });
 
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -38,15 +34,11 @@ export default function RootLayout({
       <body className={roboto.className}>
           <ThemeProvider theme={theme}>
             <Container
-              maxWidth={false}
-              disableGutters
               component={'main'}
+              className='root'
+              disableGutters
             >
-              <Box
-                className='root'
-              >
-                {children}
-              </Box>
+              {children}
             </Container>
           </ThemeProvider>
         </body>

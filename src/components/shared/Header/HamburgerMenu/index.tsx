@@ -18,8 +18,8 @@ export function HamburgerMenu () {
     return (
 
         <MenuIcon 
+            color='primary'
             onClick={handleClick} 
-            color='primary' 
             className={styles.icon} 
         />
     )

@@ -14,9 +14,10 @@ return (
             dense={true}
         >
             <Chat 
-                name={'Juanito alcachofas'}
+                name={'Francisco Perez'}
                 lastMessage={'Es muy interesante ese tema aunque la verdad no lo manejo ni conozco del todo'}
                 avatar={'https://via.placeholder.com/300'}
+                conversationId='1'
             />
         </List>
     </Box>

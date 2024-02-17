@@ -10,33 +10,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Account {
-  id                 String  @id @default(cuid())
-  userId             String
-  type               String
-  provider           String
-  providerAccountId  String
-  refresh_token      String?  @db.Text
-  access_token       String?  @db.Text
-  expires_at         Int?
-  token_type         String?
-  scope              String?
-  id_token           String?  @db.Text
-  session_state      String?
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-  @@unique([provider, providerAccountId])
-}
-
-model Session {
-  id           String   @id @default(cuid())
-  sessionToken String   @unique
-  userId       String
-  expires      DateTime
-  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-}
-
 model User {
   id            String    @id @default(cuid())
   username          String?
@@ -45,14 +18,28 @@ model User {
   image         String?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  accounts      Account[]
-  sessions      Session[]
+  conversations Conversation[]
+  messages      Message[]
 }
 
-model VerificationToken {
-  identifier String
-  token      String   @unique
-  expires    DateTime
+model Message {
+  id                    String   @id @default(cuid())
+  userId                String
+  conversationId        String
+  message               String
+  createdAt             DateTime @default(now())
+  user                  User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  conversation          Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+}
 
-  @@unique([identifier, token])
+model Conversation {
+  id            String    @id @default(cuid())
+  userId        String
+  name          String
+  photo        String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  lastMessage   String
+  messages      Message[]
+  users         User[]
 }

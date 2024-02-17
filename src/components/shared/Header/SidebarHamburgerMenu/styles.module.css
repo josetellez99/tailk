@@ -1,12 +1,13 @@
 .upBox {
     display: flex;
-    align-items: end;
+    align-items: flex-end;
     padding-bottom: 20px;
     justify-content: center;
-    background-color: #517DA2;
+    background-color: #00488f;
     width: 240px;
     height: 20%;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    color: #fafafa
 }
 
 .downBox {
@@ -15,7 +16,6 @@
     padding-top: 20px;
 }
 
-.sideMenu {
-    /* width: 250px; */
-    background-color: red;
+.button {
+    background-color: #517DA2;
 }

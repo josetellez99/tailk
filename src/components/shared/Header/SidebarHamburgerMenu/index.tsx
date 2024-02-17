@@ -28,12 +28,12 @@ export function SidebarHamburgerMenu() {
                     onClose={toggle}
                 >
                     <Box className={styles.upBox}>
-                        <Typography color='primary.main' variant="h5">Settings</Typography>
+                        <Typography variant="h5">Settings</Typography>
                     </Box>
                     <Box className={styles.downBox}>
                         <Button
+                            color='secondary'
                             variant="contained"
-                            color="secondary"
                             onClick={handleSignOut}
                         >
                             Logout

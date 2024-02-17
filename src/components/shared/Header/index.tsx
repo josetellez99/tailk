@@ -3,29 +3,58 @@ import { Typography } from "@mui/material"
 import { Toolbar } from "@mui/material"
 import { HamburgerMenu } from "./HamburgerMenu"
 import { SidebarHamburgerMenu } from "./SidebarHamburgerMenu"
+import { Avatar } from '@mui/material';
+import { Box } from "@mui/material"
+import PhoneIcon from '@mui/icons-material/Phone';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import styles from './styles.module.css'
 
-import { getUserSession } from "@/lib/getUserSession"
 import Link from 'next/link'
 
+interface ConversationHeaderProps {
+    name: string;
+    picture: string;
+}
 
-export async function Header () {
-
-    const user = await getUserSession()
-    const Component = user.name ? LoggedHeader : NotLoggedHeader
-
-    return (
-        <Component />
-    )
+export function ConversationHeader ({name, picture} : ConversationHeaderProps) {
+    return(
+        <AppBar 
+            position="fixed"
+            color="secondary"
+        >
+            <Toolbar>
+                <Link href='/'>
+                    <ArrowBackIcon 
+                        color="primary" 
+                        className={styles.backButton} 
+                />
+                </Link>
+                <Box className={styles.avatarContainer}>
+                    <Avatar src={picture} />
+                    <Typography 
+                        className={styles.name}
+                        variant="body2"
+                    >
+                            {name}
+                        </Typography>
+                </Box>
+                <Box flexGrow={1} />
+                <PhoneIcon 
+                    color="primary" 
+                />
+            </Toolbar>
+        </AppBar>
+)
 }
 
 
-function LoggedHeader () {
+export function LoggedHeader () {
 
     return (
         <>
             <AppBar 
-                className={styles.appBar}
+                position="static"
+                color="secondary"
             >
                 <Toolbar>
                     <HamburgerMenu />
@@ -37,19 +66,16 @@ function LoggedHeader () {
 }
 
 
-function NotLoggedHeader () {
+export function NoLoggedHeader () {
 
     return (
         <>
             <AppBar 
-                style={{backgroundColor: '#517DA2'}}
                 position="static"
+                color="secondary"
             >
-                <Toolbar
-                    color="primary.main"
-                >
+                <Toolbar>
                     <Typography 
-                        color='secondary.contrastText' 
                         variant="button">
                             <Link className={styles.colorButton} href="/">Tailk</Link>
                         </Typography>

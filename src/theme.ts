@@ -12,11 +12,6 @@ const roboto = Roboto({
 export const theme = createTheme({
     typography: {
         fontFamily: roboto.style.fontFamily,
-        fontSize: 16,
-        h1: {
-            fontSize: '3.5rem',
-            fontWeight: 700,
-        },
     },
     palette: {
         primary: {
@@ -26,7 +21,7 @@ export const theme = createTheme({
             contrastText: '#232323'
         },
         secondary: {
-            main: "#517DA2",
+            main: "#00488f",
             light: '#6C9FD2',
             dark: '#1B5A7D',
             contrastText: '#FAFAFA'

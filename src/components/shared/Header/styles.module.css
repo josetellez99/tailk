@@ -2,7 +2,20 @@
     color: #fafafa
 }
 
-.appBar {
-    position: static;
-    background-color: #517DA2;
+.backButton {
+    margin-right: 24px;
+    font-size: 26px;
+}
+
+.name {
+    color: #fafafa;
+    margin-left: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    flex-grow: 1;
+}
+
+.avatarContainer {
+    display: flex;
+    align-items: center;
 }
