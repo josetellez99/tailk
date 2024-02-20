@@ -4,11 +4,13 @@
     flex-direction: column;
     background-size: contain;
     background-image: url('/chat-bg-sm.png');
+    padding-top: 60px;
 }
 
 @media screen and (min-width: 500px) {
     .chatContainer {
         background-image: url('/chat-bg-lg.png');
+        padding-top: 68px;
     }
     
 }

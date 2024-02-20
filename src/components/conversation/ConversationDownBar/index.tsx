@@ -5,22 +5,31 @@ import EmojiEmotionsOutlinedIcon from '@mui/icons-material/EmojiEmotionsOutlined
 import SendIcon from '@mui/icons-material/Send';
 import styles from './styles.module.css'
 
-export function ConversationDownBar() {
+interface ConversationDownBarProps {
+    setMessages: React.Dispatch<React.SetStateAction<Message[]>>;
+}
 
-    const [message, setMessage] = React.useState('')
+export function ConversationDownBar({setMessages}: ConversationDownBarProps) {
+
+    const[localMessage, setLocalMessage] = React.useState<string>('')
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const text = e.target.value
-        setMessage(text)
+        setLocalMessage(text)
+    }
+
+    const handleClick = () => {
+        setMessages((prev) => [...prev, {content: localMessage, role: 'user'}])
+        setLocalMessage('')
     }
 
 
     return (
         <>
             <section className={styles.downBar}>
-                <EmojiEmotionsOutlinedIcon className={styles.emoji} />
-                <input type="text" onChange={handleChange} value={message} className={styles.input} />
-                <SendIcon color='secondary' className={styles.send} />
+                {/* <EmojiEmotionsOutlinedIcon className={styles.emoji} /> */}
+                <input type="text" onChange={handleChange} value={localMessage} className={styles.input} />
+                <SendIcon onClick={handleClick} color='secondary' className={styles.send} />
             </section>
         </>
     )
