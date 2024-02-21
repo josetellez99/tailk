@@ -47,6 +47,28 @@ export function ConversationHeader ({name, picture} : ConversationHeaderProps) {
 )
 }
 
+export function NewConversationHeader () {
+
+    return (
+        <>
+            <AppBar 
+                position="static"
+                color="secondary"
+            >
+                <Toolbar>
+                    <Link href='/'>
+                        <ArrowBackIcon 
+                            color="primary" 
+                            className={styles.backButton} 
+                    />
+                    </Link>
+                </Toolbar>
+            </AppBar>
+            <SidebarHamburgerMenu />
+        </>
+    )
+}
+
 
 export function LoggedHeader () {
 

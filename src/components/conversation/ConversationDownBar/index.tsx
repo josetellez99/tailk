@@ -23,7 +23,7 @@ export function ConversationDownBar({messages, setMessages}: ConversationDownBar
         setMessages((prev) => [...prev, {content: localMessage, role: 'user'}])
         setLocalMessage('')
 
-        const test = await fetch('http://localhost:3000/api/chatCompletions', {
+        const res = await fetch('http://localhost:3000/api/chatCompletions', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -31,9 +31,7 @@ export function ConversationDownBar({messages, setMessages}: ConversationDownBar
             body: JSON.stringify({messages: [...messages, {role: 'user', content: localMessage}]})
         });
     
-        const data = await test.json();
-        console.log(data);
-
+        const data = await res.json();
         setMessages((prev) => [...prev, {content: data.content, role: data.role}])
     };
 

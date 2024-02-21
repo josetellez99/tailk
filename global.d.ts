@@ -3,3 +3,10 @@ declare type Message = {
     position?: 'First' | 'Middle' | 'Last';
     role: 'user' | 'assistant';
 }
+
+declare type Chat = {
+    id: string;
+    name: string;
+    lastMessage: string;
+    avatar: string;
+}
