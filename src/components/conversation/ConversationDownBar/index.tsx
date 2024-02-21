@@ -7,9 +7,10 @@ import styles from './styles.module.css'
 
 interface ConversationDownBarProps {
     setMessages: React.Dispatch<React.SetStateAction<Message[]>>;
+    messages: Message[];
 }
 
-export function ConversationDownBar({setMessages}: ConversationDownBarProps) {
+export function ConversationDownBar({messages, setMessages}: ConversationDownBarProps) {
 
     const[localMessage, setLocalMessage] = React.useState<string>('')
 
@@ -18,10 +19,23 @@ export function ConversationDownBar({setMessages}: ConversationDownBarProps) {
         setLocalMessage(text)
     }
 
-    const handleClick = () => {
+    const handleClick = async () => {
         setMessages((prev) => [...prev, {content: localMessage, role: 'user'}])
         setLocalMessage('')
-    }
+
+        const test = await fetch('http://localhost:3000/api/chatCompletions', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({messages: [...messages, {role: 'user', content: localMessage}]})
+        });
+    
+        const data = await test.json();
+        console.log(data);
+
+        setMessages((prev) => [...prev, {content: data.content, role: data.role}])
+    };
 
 
     return (
