@@ -1,3 +1,4 @@
+import React from 'react';
 import { Message } from '@/components/conversation/Message';
 import styles from './styles.module.css'
 

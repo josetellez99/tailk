@@ -11,7 +11,17 @@ interface ChatPageProps {
   };
 }
 
-export default function ChatPage({params, searchParams}: ChatPageProps) {
+export default async function ConversationPage({params, searchParams}: ChatPageProps) {
+
+  const res = await fetch('http://localhost:3000/api/fetchUserMessages', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({conversationId: params.conversationId})
+  });
+
+  const conversationMessages = await res.json();
 
   return (
     <>
@@ -20,6 +30,7 @@ export default function ChatPage({params, searchParams}: ChatPageProps) {
         picture={searchParams.picture}
       />
       <ConversationUI
+        conversationMessages={conversationMessages}
         conversationId={params.conversationId}
       />
     </>

@@ -1,18 +1,72 @@
+import { getUserSession } from "@/lib/getUserSession";
+
+import database from "@/services/db/database";
 import OpenAI from "openai";
+const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
-const openai = new OpenAI({ apiKey: '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', dangerouslyAllowBrowser: true });
 
-export async function chatCompletions( messages : Message[]) {
-    const res = await openai.chat.completions.create({
-        messages: [
-            {role: 'system', content: 'You are an assistant who people can talk to about anything. You act as a person and your responses are as human as possible chating in a chat app as whatsapp or telegram'},
-            ...messages
-        ],
-        model: "gpt-3.5-turbo",
-        temperature: 0.7,
+
+export async function chatCompletions( messages : Message[], conversationId: string) {
+
+    // Get the conversation from the database to set the prompt
+    const conversation = await database.conversation.findFirst({
+        where: {
+            id: conversationId
+        }
     })
 
-    const message = res.choices[0].message
+    if (!conversation) {
+        throw new Error('Conversation not found')
+    }
 
-    return message
+    // Get the user from the session to set the prompt and set the new messages in the database
+    const user = await getUserSession();
+
+    // openai api expect objects with just the role and the content. Our messages contain more information
+    const sanitizedMessages = messages.map((message) => {
+        return {role: message.role, content: message.content}
+    })
+
+    // We only want the last 10 messages to send to the openai api because of tokens prices per request
+    const lastTenMessages = sanitizedMessages.slice(-10);
+
+    // We make the request to the openai api
+    const res = await openai.chat.completions.create({
+        messages: [
+            {role: 'system', content: 
+                `You are a person named ${conversation.name} and you are having a chat like conversation witha  user named ${user.name}.
+                Act as natural as possible like in a whatasapp conversation.You mainly provide short answers.
+                Be a friendly person. and chat like a normal person.
+                You act as a person like this: ${conversation.description} and all your response are exclusive in the next language: ${conversation.language}.
+            `},
+            ...lastTenMessages
+        ],
+        model: "gpt-3.5-turbo",
+        temperature: 0.5,
+    })
+
+    // This is the assitant response
+    const assistantResponseMessage = res.choices[0].message
+
+    // We save the assistant response in the database
+
+    const userLastMessage = await database.message.create({
+        data: {
+            userId: user.id!,
+            conversationId: conversationId,
+            role: 'user',
+            content: lastTenMessages[lastTenMessages.length - 1].content,
+        }
+    })
+
+    const assistantLastMessage = await  database.message.create({
+        data: {
+            userId: user.id!,
+            conversationId: conversationId,
+            role: 'assistant',
+            content: assistantResponseMessage.content!,
+        }
+    })
+
+    return [userLastMessage, assistantLastMessage]
 }

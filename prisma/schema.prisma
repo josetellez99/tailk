@@ -22,11 +22,18 @@ model User {
   messages      Message[]
 }
 
+enum Role {
+  user
+  assistant
+  system
+}
+
 model Message {
   id                    String   @id @default(cuid())
   userId                String
   conversationId        String
-  message               String
+  content               String
+  role                 Role
   createdAt             DateTime @default(now())
   user                  User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   conversation          Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
