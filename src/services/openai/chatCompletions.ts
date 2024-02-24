@@ -68,5 +68,18 @@ export async function chatCompletions( messages : Message[], conversationId: str
         }
     })
 
+    // We set the assitantLastMessage as the last message in the conversation
+
+    await database.conversation.update({
+        where: {
+            id: conversationId
+        },
+        data: {
+            lastMessage: assistantLastMessage.content
+        }
+    })
+
+    // we return the last user message and the last assistant message to set them in the state in the front end
+
     return [userLastMessage, assistantLastMessage]
 }

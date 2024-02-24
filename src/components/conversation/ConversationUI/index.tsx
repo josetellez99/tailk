@@ -13,6 +13,8 @@ interface ConversationUIProps {
 
 export function ConversationUI({ conversationId, conversationMessages } : ConversationUIProps) {
 
+  const containerRef = React.useRef<HTMLDivElement>(null);
+
   const [messages, setMessages] = React.useState<Message[]>(conversationMessages)
   const [shouldFetch, setShouldFetch] = React.useState(false);
 
@@ -48,7 +50,11 @@ export function ConversationUI({ conversationId, conversationMessages } : Conver
 
   return (
     <>
-      <Box className={styles.chatContainer}>
+      <Box
+        component={'div'}
+        className={styles.chatContainer}
+        ref={containerRef}  
+      >
         <MessageList
           messages={messages}
         />
@@ -56,6 +62,7 @@ export function ConversationUI({ conversationId, conversationMessages } : Conver
       <ConversationDownBar
         setMessages={setMessages}
         setShouldFetch={setShouldFetch}
+        containerRef={containerRef}
       />
     </>
   );

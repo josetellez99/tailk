@@ -30,8 +30,8 @@ export function Chat ({name, lastMessage, avatar, conversationId} : ChatProps) {
                     }}
                     secondary={lastMessage}
                     secondaryTypographyProps={{
-                        color: '#517DA2', //theme secondaru main
-                        fontSize: 16,
+                        color: '#00488f', //theme secondaru main
+                        fontSize: 15,
                         whiteSpace: 'nowrap',
                         overflow: 'hidden',
                         textOverflow: 'ellipsis',

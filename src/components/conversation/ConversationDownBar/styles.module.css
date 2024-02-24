@@ -1,11 +1,10 @@
 .downBar {
     position: fixed;
     display: flex;
-    height: 48px;
-    align-items: center;
+    padding-block: 12px;
+    align-items: flex-end;
     gap: 8px;
-    padding-inline: 8px;
-    position: fixed;
+    padding-inline: 12px;
     bottom: 0;
     left: 0;
     right: 0;
@@ -14,12 +13,20 @@
 }
 
 .input {
-    display: block;
+    display: flex;
+    align-items: center;
     width: 100%;
-    height: 30px;
     border: none;
     background-color: #fafafa;
-    font-size: 16px;
+    font-size: 17px;
+    resize: none;
+    overflow: auto;
+    height: 24px;
+    max-height: 100px;
+}
+
+.input::-webkit-scrollbar {
+    display: none;
 }
 
 .input:focus {

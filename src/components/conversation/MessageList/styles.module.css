@@ -6,3 +6,7 @@
     gap: 4px;
     padding-inline: 8px;
 }
+
+.messageList::-webkit-scrollbar {
+    display: none;
+}
