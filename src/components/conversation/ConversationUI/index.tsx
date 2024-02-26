@@ -45,8 +45,8 @@ export function ConversationUI({ conversationId, conversationMessages } : Conver
     setShouldFetch(false);
   };
 
-  fetchResponseModel();
-}, [shouldFetch]); // Dependencia en 'shouldFetch', no en 'messages'
+    fetchResponseModel();
+  }, [shouldFetch]); 
 
   return (
     <>

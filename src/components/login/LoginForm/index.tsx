@@ -74,7 +74,7 @@ export function LoginForm() {
                         align="center"
                         marginBlockEnd={3}
                     >
-                        Don't have an account? <Link className={styles.registerLink} href="/register">Register</Link>
+                        Don&apos;t have an account? <Link className={styles.registerLink} href="/register">Register</Link>
                     </Typography>
                 </form>
         </>
