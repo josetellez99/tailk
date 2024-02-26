@@ -1,13 +1,13 @@
 import database from '@/services/db/database'
 import { NextRequest } from 'next/server'
 
-export async function GET (request: NextRequest) {
+export async function POST (request: NextRequest) {
 
     try {
-        const requestObject = await request.json()
+        const requestObject = await request.text()
         const messages = await database.message.findMany({
             where: {
-                conversationId: requestObject.conversationId
+                conversationId: requestObject
             },
             orderBy: {
                 createdAt: 'asc'
