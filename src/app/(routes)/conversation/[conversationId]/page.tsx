@@ -13,7 +13,7 @@ interface ChatPageProps {
 
 export default async function ConversationPage({params, searchParams}: ChatPageProps) {
 
-  const res = await fetch('http://localhost:3000/api/fetchUserMessages', {
+  const res = await fetch(`${process.env.SERVER_URL}/api/fetchUserMessages`, {
     next: {
       tags: ['get-user-messages']
     },

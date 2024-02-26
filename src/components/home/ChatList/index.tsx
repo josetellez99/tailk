@@ -6,7 +6,7 @@ import styles from './styles.module.css'
 
 export async function ChatList() {
 
-    const res = await fetch('http://localhost:3000/api/fetchUserConversations', {
+    const res = await fetch(`${process.env.SERVER_URL}/api/chatCompletions`, {
         next: {
             tags: ['get-user-conversations']
         }
