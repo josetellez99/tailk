@@ -14,9 +14,6 @@ interface ChatPageProps {
 export default async function ConversationPage({params, searchParams}: ChatPageProps) {
 
   const res = await fetch(`${process.env.SERVER_URL}/api/fetchUserMessages`, {
-    next: {
-      tags: ['get-user-messages']
-    },
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
