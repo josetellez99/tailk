@@ -10,8 +10,8 @@ export const authOptions = {
             credentials: {
                 email: { label: 'email', type: 'email', placeholder: 'jsmith@gmail.com' },
                 password: { label: 'Password', type: 'password', placeholder: '********'}
-            },        
-            async authorize(credentials, req) {
+            },
+            async authorize(credentials) {
 
                 try {
                     const userFound = await db.user.findUnique({
@@ -19,17 +19,20 @@ export const authOptions = {
                             email: credentials?.email
                         }
                     })
-    
-                    if(userFound?.password && credentials?.password) {
-                        const validPassword =  await bcrypt.compare(credentials.password, userFound.password)
-                        if(!validPassword) return null
-                    }
-    
+
+                    if(!userFound) return null
+
+                    const matchPassword =  await bcrypt.compare(credentials!.password, userFound!.password!)
+
+                    if(!matchPassword) return null
+
                     return {
+                        id: userFound?.id,
                         image: userFound?.id,
                         name: userFound?.username,
                         email: userFound?.email,
                     }
+
                 } catch (error) {
                     return null
                 }

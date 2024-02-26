@@ -14,11 +14,14 @@ interface ChatPageProps {
 export default async function ConversationPage({params, searchParams}: ChatPageProps) {
 
   const res = await fetch('http://localhost:3000/api/fetchUserMessages', {
+    next: {
+      tags: ['get-user-messages']
+    },
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({conversationId: params.conversationId})
+    body: JSON.stringify({conversationId: params.conversationId}),
   });
 
   const conversationMessages = await res.json();

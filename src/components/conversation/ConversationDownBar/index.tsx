@@ -24,6 +24,13 @@ export function ConversationDownBar({setMessages, setShouldFetch, containerRef}:
 
     const[localMessage, setLocalMessage] = React.useState<string>('')
 
+    const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            handleClick();
+        }
+    }
+
     const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
         e.target.style.height = '24px';
         e.target.style.height = `${e.target.scrollHeight}px`;
@@ -48,6 +55,7 @@ export function ConversationDownBar({setMessages, setShouldFetch, containerRef}:
                     value={localMessage} 
                     className={`${styles.input} ${roboto.className}`} 
                     ref={inputRef}
+                    onKeyDown={handleKeyDown}
                 />
                 <SendIcon onClick={handleClick} color='secondary' className={styles.send} />
             </section>
