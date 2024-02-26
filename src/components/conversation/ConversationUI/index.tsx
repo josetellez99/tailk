@@ -23,7 +23,7 @@ export function ConversationUI({ conversationId, conversationMessages } : Conver
       return;
     }
     const fetchResponseModel = async () => {
-      const res = await fetch('http://localhost:3000/api/chatCompletions', {
+      const res = await fetch(`${process.env.SERVER_URL}/api/chatCompletions`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
