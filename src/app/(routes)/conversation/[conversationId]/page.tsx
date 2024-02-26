@@ -15,7 +15,12 @@ export default async function ConversationPage({params, searchParams}: ChatPageP
 
   const res = await fetch(`${process.env.SERVER_URL}/api/fetchUserMessages`, {
     method: 'POST',
-    body: params.conversationId
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      conversationId: params.conversationId
+    })
   });
 
   const conversationMessages = await res.json();

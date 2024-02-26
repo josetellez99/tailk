@@ -4,10 +4,10 @@ import { NextRequest } from 'next/server'
 export async function POST (request: NextRequest) {
 
     try {
-        const requestObject = await request.text()
+        const requestObject = await request.json()
         const messages = await database.message.findMany({
             where: {
-                conversationId: requestObject
+                conversationId: requestObject.conversationId
             },
             orderBy: {
                 createdAt: 'asc'
