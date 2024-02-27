@@ -20,7 +20,7 @@ export function ConversationUI({ conversationId, conversationMessages } : Conver
   const [shouldFetch, setShouldFetch] = React.useState(false);
 
 React.useEffect(() => {
-  if (!shouldFetch) {
+  if (shouldFetch) {
     return;
   }
   const fetchResponseModel = async () => {
@@ -28,6 +28,7 @@ React.useEffect(() => {
       messages: messages,
       conversationId: conversationId,
     });
+    console.log('workinggggggggg')
 
     const [lastUserMessage, lastAsistantResponse] = res.data;
 
