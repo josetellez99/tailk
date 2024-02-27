@@ -1,6 +1,7 @@
 'use client'
 
 import React from 'react';
+import axios from 'axios';
 import { ConversationDownBar } from "@/components/conversation/ConversationDownBar";
 import { Box } from "@mui/material";
 import { MessageList } from "@/components/conversation/MessageList";
@@ -18,23 +19,17 @@ export function ConversationUI({ conversationId, conversationMessages } : Conver
   const [messages, setMessages] = React.useState<Message[]>(conversationMessages)
   const [shouldFetch, setShouldFetch] = React.useState(false);
 
-  React.useEffect(() => {
-    if (!shouldFetch) {
-      return;
-    }
-    const fetchResponseModel = async () => {
-      const res = await fetch(`${process.env.SERVER_URL}/api/chatCompletions`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          messages: messages,
-          conversationId: conversationId,
-        }),
-      });
+React.useEffect(() => {
+  if (!shouldFetch) {
+    return;
+  }
+  const fetchResponseModel = async () => {
+    const res = await axios.post(`${process.env.SERVER_URL}/api/chatCompletions`, {
+      messages: messages,
+      conversationId: conversationId,
+    });
 
-    const [lastUserMessage, lastAsistantResponse] = await res.json();
+    const [lastUserMessage, lastAsistantResponse] = res.data;
 
     setMessages((prev) => [
       ...prev.slice(0, prev.length - 1), // Todos los elementos excepto el último
@@ -45,8 +40,8 @@ export function ConversationUI({ conversationId, conversationMessages } : Conver
     setShouldFetch(false);
   };
 
-    fetchResponseModel();
-  }, [shouldFetch]); 
+  fetchResponseModel();
+}, [shouldFetch]);
 
   return (
     <>
