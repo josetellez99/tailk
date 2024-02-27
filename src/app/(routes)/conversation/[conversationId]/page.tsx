@@ -1,5 +1,6 @@
 import { ConversationHeader } from "@/components/shared/Header";
 import { ConversationUI } from "@/components/conversation/ConversationUI";
+import axios from "axios"; 
 
 interface ChatPageProps {
   params: {
@@ -13,20 +14,23 @@ interface ChatPageProps {
 
 export default async function ConversationPage({params, searchParams}: ChatPageProps) {
 
-  console.log('this is the conversationId')
-  console.log(params.conversationId)
-
-  const res = await fetch(`${process.env.SERVER_URL}/api/fetchUserMessages`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      conversationId: params.conversationId
-    })
+  const res = await axios.post(`${process.env.SERVER_URL}/api/fetchUserMessages`, {
+    conversationId: params.conversationId
   });
 
-  const conversationMessages = await res.json();
+  const conversationMessages = res.data;
+
+  // const res = await fetch(`${process.env.SERVER_URL}/api/fetchUserMessages`, {
+  //   method: 'POST',
+  //   headers: {
+  //     'Content-Type': 'application/json'
+  //   },
+  //   body: JSON.stringify({
+  //     conversationId: params.conversationId
+  //   })
+  // });
+
+  // const conversationMessages = await res.json();
 
   return (
     <>
