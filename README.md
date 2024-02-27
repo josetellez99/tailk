@@ -1,3 +1,5 @@
+Checkout this project here: https://tailk-xi.vercel.app/
+
 This project is an app to practice languages with an AI.
 
 It's a telgram like app where each chat is a AI under the hood talking with you.
