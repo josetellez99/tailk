@@ -20,15 +20,12 @@ export function ConversationUI({ conversationId, conversationMessages } : Conver
   const [shouldFetch, setShouldFetch] = React.useState(false);
 
 React.useEffect(() => {
-  if (shouldFetch) {
-    return;
-  }
+  if(!shouldFetch) return;
   const fetchResponseModel = async () => {
-    const res = await axios.post(`${process.env.SERVER_URL}/api/chatCompletions`, {
+    const res = await axios.post(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/chatCompletions`, {
       messages: messages,
       conversationId: conversationId,
     });
-    console.log('workinggggggggg')
 
     const [lastUserMessage, lastAsistantResponse] = res.data;
 
@@ -37,9 +34,9 @@ React.useEffect(() => {
       lastUserMessage,
       lastAsistantResponse,
     ]);
-
-    setShouldFetch(false);
   };
+
+  setShouldFetch(false);
 
   fetchResponseModel();
 }, [shouldFetch]);

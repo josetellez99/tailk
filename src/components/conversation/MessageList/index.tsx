@@ -20,7 +20,7 @@ export function MessageList ({ messages } : MessageListProps) {
         <div className={styles.messageList}>
             {messages.map((message) => (
                 <Message
-                    key={message.id}
+                    key={message.id + message.content}
                     message={message.content}
                     position={message.position}
                     role={message.role}
