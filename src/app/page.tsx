@@ -36,7 +36,7 @@ async function LoggedPage() {
 
 function NotLoggedPage() {
   return (
-    <FitLayout>
+    <>
       <NoLoggedHeader />
       <Container className={styles.rootLayout}>
         <Box className={styles.layout}>
@@ -44,6 +44,6 @@ function NotLoggedPage() {
           <CallToAction />
         </Box>
       </Container>
-    </FitLayout>
+    </>
   )
 }

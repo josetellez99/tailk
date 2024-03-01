@@ -52,8 +52,8 @@ export function NewConversationHeader () {
     return (
         <>
             <AppBar 
-                position="static"
                 color="secondary"
+                className={styles.appBar}
             >
                 <Toolbar>
                     <Link href='/'>
@@ -75,8 +75,8 @@ export function LoggedHeader () {
     return (
         <>
             <AppBar 
-                position="static"
                 color="secondary"
+                className={styles.appBar}
             >
                 <Toolbar>
                     <HamburgerMenu />
@@ -93,8 +93,8 @@ export function NoLoggedHeader () {
     return (
         <>
             <AppBar 
-                position="static"
                 color="secondary"
+                className={styles.appBar}
             >
                 <Toolbar>
                     <Typography 
