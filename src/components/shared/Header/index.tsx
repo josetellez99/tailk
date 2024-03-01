@@ -93,6 +93,7 @@ export function NoLoggedHeader () {
     return (
         <>
             <AppBar 
+                position="static"
                 color="secondary"
             >
                 <Toolbar>
