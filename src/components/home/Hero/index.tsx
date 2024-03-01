@@ -5,7 +5,7 @@ export function Hero() {
 
     return (
         <Typography
-            variant="h1"
+            variant="h2"
             className={styles.hero}
         >
             Learn english talking with an AI

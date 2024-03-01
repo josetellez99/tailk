@@ -10,10 +10,10 @@ export function CallToAction() {
             variant="contained" 
             className={styles.buttonGroup}
         >
-            <Button className={styles.button}>
+            <Button className={styles.button} size="large">
                 <Link className={styles.buttonColor} href="/register">Register</Link>
             </Button>
-            <Button className={styles.button}>
+            <Button className={styles.button} size="large">
                 <Link className={styles.buttonColor} href="/login">Login</Link>
             </Button>
         </ButtonGroup>
