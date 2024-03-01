@@ -20,6 +20,7 @@ export function ConversationHeader ({name, picture} : ConversationHeaderProps) {
     return(
         <AppBar 
             color="secondary"
+            className={styles.appBar}
         >
             <Toolbar>
                 <Link href='/'>

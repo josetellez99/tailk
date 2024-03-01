@@ -1,3 +1,8 @@
+.appBar {
+    position: sticky;
+    top: 0;
+}
+
 .colorButton {
     color: #fafafa
 }

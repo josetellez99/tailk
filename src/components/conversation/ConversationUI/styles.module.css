@@ -7,6 +7,8 @@
     flex-direction: column;
     background-size: contain;
     background-image: url('/chat-bg-sm.png');
+    padding-top: 6px;
+    padding-bottom: 4px;
     flex-grow: 1;
 }
 

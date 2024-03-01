@@ -1,7 +1,5 @@
 import { ConversationHeader } from "@/components/shared/Header";
 import { ConversationUI } from "@/components/conversation/ConversationUI";
-import { FitLayout } from "@/components/shared/FitLayout";
-
 import axios from "axios"; 
 
 interface ChatPageProps {
@@ -23,7 +21,7 @@ export default async function ConversationPage({params, searchParams}: ChatPageP
   const conversationMessages = res.data;
 
   return (
-    <FitLayout>
+    <>
       <ConversationHeader
         name={searchParams.name}
         picture={searchParams.picture}
@@ -32,6 +30,6 @@ export default async function ConversationPage({params, searchParams}: ChatPageP
         conversationMessages={conversationMessages}
         conversationId={params.conversationId}
       />
-    </FitLayout>
+    </>
   );
 }

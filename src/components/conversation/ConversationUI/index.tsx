@@ -43,7 +43,7 @@ React.useEffect(() => {
 }, [shouldFetch]);
 
   return (
-    <FitLayout className={styles.fitLayout}>
+    <>
       <Box
         component={'div'}
         className={styles.chatContainer}
@@ -58,6 +58,6 @@ React.useEffect(() => {
         setShouldFetch={setShouldFetch}
         containerRef={containerRef}
       />
-    </FitLayout>
+    </>
   );
 }
