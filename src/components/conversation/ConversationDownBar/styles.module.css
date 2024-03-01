@@ -1,9 +1,9 @@
 .downBar {
     position: static;
     display: flex;
-    padding-block: 16px;
+    align-items: center;
+    padding-block: 12px;
     padding-inline: 12px;
-    align-items: flex-end;
     gap: 8px;
     bottom: 0;
     left: 0;
@@ -13,15 +13,14 @@
 }
 
 .input {
-    display: flex;
-    align-items: center;
     width: 100%;
+    padding-top: 4px;
     border: none;
     background-color: #fafafa;
     font-size: 17px;
     resize: none;
     overflow: auto;
-    height: 28px;
+    height: 30px;
     max-height: 100px;
 }
 

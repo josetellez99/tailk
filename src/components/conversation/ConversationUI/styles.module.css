@@ -1,3 +1,7 @@
+.fitLayout {
+    flex-grow: 1;
+}
+
 .chatContainer {
     display: flex;
     flex-direction: column;

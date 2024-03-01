@@ -43,7 +43,7 @@ React.useEffect(() => {
 }, [shouldFetch]);
 
   return (
-    <FitLayout>
+    <FitLayout className={styles.fitLayout}>
       <Box
         component={'div'}
         className={styles.chatContainer}

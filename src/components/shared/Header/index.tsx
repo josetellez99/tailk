@@ -19,7 +19,6 @@ interface ConversationHeaderProps {
 export function ConversationHeader ({name, picture} : ConversationHeaderProps) {
     return(
         <AppBar 
-            position="fixed"
             color="secondary"
         >
             <Toolbar>

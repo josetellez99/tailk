@@ -1,8 +1,13 @@
 import styles from './styles.module.css'
 
-export function FitLayout ({children}: {children: React.ReactNode}) {
+interface FitLayoutProps {
+    children: React.ReactNode;
+    className?: string;
+}
+
+export function FitLayout ({children, className}: FitLayoutProps) {
     return (
-        <div className={styles.fitLayout}>
+        <div className={`${styles.fitLayout} ${className}`}>
             {children}
         </div>
     )
