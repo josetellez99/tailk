@@ -5,6 +5,7 @@ import axios from 'axios';
 import { ConversationDownBar } from "@/components/conversation/ConversationDownBar";
 import { Box } from "@mui/material";
 import { MessageList } from "@/components/conversation/MessageList";
+import { FitLayout } from "@/components/shared/FitLayout";
 import styles from './styles.module.css'
 
 interface ConversationUIProps {
@@ -42,7 +43,7 @@ React.useEffect(() => {
 }, [shouldFetch]);
 
   return (
-    <>
+    <FitLayout>
       <Box
         component={'div'}
         className={styles.chatContainer}
@@ -57,6 +58,6 @@ React.useEffect(() => {
         setShouldFetch={setShouldFetch}
         containerRef={containerRef}
       />
-    </>
+    </FitLayout>
   );
 }

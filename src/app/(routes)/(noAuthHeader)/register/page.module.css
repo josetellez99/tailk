@@ -1,17 +1,7 @@
-/* .layout {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 100px;
-    justify-content: center;
-    height: 100%;
-} */
-
 .rootLayout {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 90%;
 }
 
 .layout {
