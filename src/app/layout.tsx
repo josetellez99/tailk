@@ -1,6 +1,5 @@
 import { ThemeProvider } from '@mui/material/styles';
 import { theme } from '@/theme';
-import { Container } from '@mui/material';
 
 import type { Viewport } from 'next'
 import type { Metadata } from "next";
@@ -33,13 +32,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={roboto.className}>
           <ThemeProvider theme={theme}>
-            <Container
-              component={'main'}
-              className='root'
-              disableGutters
-            >
+            <main className='root'>
               {children}
-            </Container>
+            </main>
           </ThemeProvider>
         </body>
     </html>

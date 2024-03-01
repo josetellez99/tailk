@@ -5,6 +5,7 @@ import { LoggedHeader } from "@/components/shared/Header";
 import { NoLoggedHeader } from "@/components/shared/Header";
 import { ChatList } from "@/components/home/ChatList";
 import { NewConversationButton } from "@/components/home/NewConversationButton";
+import { FitLayout } from "@/components/shared/FitLayout";
 import styles from './page.module.css'
 
 import { getUserSession } from "@/lib/getUserSession";
@@ -35,7 +36,7 @@ async function LoggedPage() {
 
 function NotLoggedPage() {
   return (
-    <>
+    <FitLayout>
       <NoLoggedHeader />
       <Container className={styles.rootLayout}>
         <Box className={styles.layout}>
@@ -43,6 +44,6 @@ function NotLoggedPage() {
           <CallToAction />
         </Box>
       </Container>
-    </>
+    </FitLayout>
   )
 }
