@@ -50,5 +50,5 @@ model Conversation {
   updatedAt     DateTime @updatedAt
   lastMessage   String
   messages      Message[]
-  users         User[]
+  user         User @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
